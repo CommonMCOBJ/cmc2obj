@@ -412,7 +412,7 @@ public class ObjExporter {
 	private static void writeCommonMcObjHeader(PrintWriter objWriter) {
 		objWriter.println("# COMMON_MC_OBJ_START");
 		objWriter.println("# version: 1");
-		objWriter.println("# exporter: jmc2obj");  // Name of the exporter, all lowercase, with spaces substituted by underscores
+		objWriter.println("# exporter: cmc2obj");  // Name of the exporter, all lowercase, with spaces substituted by underscores
 		objWriter.println("#");
 		objWriter.println("# world_name: " + Options.worldDir.getName());  // Name of the source world
 		objWriter.println("# world_path: " + Options.worldDir.toString());  // Path of the source world
