@@ -16,7 +16,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import org.jmc.CheckUpdate;
 import org.jmc.Version;
 import org.jmc.util.Messages;
 
@@ -93,12 +92,7 @@ public class UpdateWindow extends JmcFrame{
 					@Override
 					public void run() {
 						tfCurrent.setText(String.valueOf(Version.VERSION()));
-						tfNew.setText(String.valueOf(CheckUpdate.getVersion()));
-						
-						if(CheckUpdate.isAvailable())
-							lStatus.setText(Messages.getString("UpdateWindow.NEW_AVAIL"));
-						else
-							lStatus.setText(Messages.getString("UpdateWindow.NO_NEW"));
+						lStatus.setText(Messages.getString("UpdateWindow.NO_NEW"));
 						
 					}
 				}).start();

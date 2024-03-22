@@ -40,7 +40,7 @@ public class Main
 			Locale.setDefault(Locale.ENGLISH);
 		}
 		
-		System.out.println("jmc2obj "+Version.VERSION());
+		System.out.println("cmc2obj "+Version.VERSION());
 
 		if (args.length == 0) {
 			Options.uiMode = UIMode.GUI;
@@ -78,8 +78,6 @@ public class Main
 		catch (Exception e) {
 			Log.error("Error reading configuration file:", e);
 		}
-		
-		CheckUpdate.asyncCheck();
 	}
 	
 
