@@ -9,26 +9,19 @@ import org.jmc.registry.NamespaceID;
  * A special-purpose implementation of BlockInfo used to represent unknown block types.
  * The behavior of this class varies according to the "renderUnknown" global option.
  */
-public class NullBlockInfo extends BlockInfo
+public class NullBlockInfo : BlockInfo(NamespaceID.NULL, "unknown", null, Occlusion.NONE, null, false, null)
 {
-	private BlockModel noneModel;
-	
+	private val noneModel: BlockModel;
 
-	NullBlockInfo()
-	{
-		super(NamespaceID.NULL, "unknown", null, Occlusion.NONE, null, false, null);
-
-		noneModel = new None();
+	init {
+		noneModel = None();
 	}
 
-	
-	@Override
-	public Occlusion getOcclusion() {
+	override fun getOcclusion(): Occlusion {
 		return Occlusion.NONE; 
 	}
 
-	@Override
-	public BlockModel getModel() {
+	override fun getModel(): BlockModel {
 		return noneModel; 
 	}
 
