@@ -11,12 +11,14 @@ import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.HashMap;
 import kotlin.collections.MutableMap;
 
 import javax.annotation.CheckForNull;
 
 import org.jmc.Options.OffsetType;
+import org.jmc.geom.Vertex;
 import org.jmc.models.Banner;
 import org.jmc.registry.Registries;
 import org.jmc.threading.ReaderRunnable;
@@ -397,8 +399,10 @@ fun export(progress: ProgressCallback?, writeTex: Boolean) {
  * in OBJs.
  * @param objWriter
  *      The writer that's writing the OBJ file
+ * @param offsetVec
+ *	The vector for offsets
  */
-private fun writeCommonMcObjHeader(objWriter: PrintWriter) {
+private fun writeCommonMcObjHeader(objWriter: PrintWriter, offsetVec: Vertex) {
 	objWriter.println("# COMMON_MC_OBJ_START");
 	objWriter.println("# version: 1");
 	objWriter.println("# exporter: cmc2obj");  // Name of the exporter, all lowercase, with spaces substituted by underscores
@@ -406,12 +410,13 @@ private fun writeCommonMcObjHeader(objWriter: PrintWriter) {
 	objWriter.println("# world_path: ${Options.worldDir?.toString()}");  // Path of the source world
 	objWriter.println("# export_bounds_min: (${Options.minX}, ${Options.minY}, ${Options.minZ})");  // The lowest block coordinate exported in the obj file
 	objWriter.println("# export_bounds_max: (${Options.maxX-1}, ${Options.maxY-1}, ${Options.maxZ-1})");  // The highest block coordinate exported in the obj file
-	objWriter.println("# export_offset: (${Options.offsetX}, 0, ${Options.offsetZ})");
+	objWriter.println("# export_offset: " + String.format(Locale.US, "(%f, %f, %f)", offsetVec.x, offsetVec.y, offsetVec.z)); // The offset vector the model was exported with
+	objWriter.println("# block_origin_offset: (-0.5, -0.5, -0.5)"); // The offset vector of the block model origins
 	objWriter.println("# block_scale: ${Options.scale}"); // Scale of each block
 	objWriter.println("# is_centered: " + (if (Options.offsetType == OffsetType.CENTER) "true" else "false"));  // true if centered, false if not
 	objWriter.println("# z_up: false");  // true if the Z axis is up instead of Y, false is not
-	objWriter.println("# texture_type: INDIVIDUAL_TILES");  // ATLAS or INDIVIDUAL_TILES
-	objWriter.println("# has_split_blocks: " + (if (Options.objectPerBlock) "true" else "false"));  // true if blocks have been split, false if not
+	objWriter.println("# texture_type: " + (if (Options.singleMaterial) "ATLAS" else "INDIVIDUAL_TILES"));  // ATLAS or INDIVIDUAL_TILES
+	objWriter.println("# has_split_blocks: " + (if (Options.objectPerMaterial) "true" else "false"));  // true if blocks have been split, false if not
 	objWriter.println("# COMMON_MC_OBJ_END");
 	objWriter.println();
 }
