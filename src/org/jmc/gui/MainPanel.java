@@ -119,7 +119,7 @@ public class MainPanel extends JPanel {
 						splashes.add(line);
 					in.close();
 					int r = (int) (Math.random() * (double) splashes.size());
-					MainWindow.main.setTitle("jMc2Obj - " + splashes.get(r));
+					MainWindow.main.setTitle("cmc2OBJ - " + splashes.get(r));
 				}
 				zis.close();
 			} catch (Exception e) {

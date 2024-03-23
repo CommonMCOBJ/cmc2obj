@@ -66,7 +66,7 @@ public class MainWindow extends JmcFrame
 		setSize(1100,800);
 		setMinimumSize(new Dimension(400,400));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setTitle("jMC2Obj");
+		setTitle("cmc2OBJ");
 		setLocationRelativeTo(null);
 		
 		panel = new MainPanel();		
