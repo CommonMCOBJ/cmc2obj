@@ -126,7 +126,7 @@ fun export(progress: ProgressCallback?, writeTex: Boolean) {
 		writeRunner.setOffset(oxs.toDouble(), oys.toDouble(), ozs.toDouble());
 		writeRunner.setScale(Options.scale);
 		
-		writeCommonMcObjHeader(obj_writer);
+		writeCommonMcObjHeader(obj_writer, Vertex(oxs.toDouble(), oys.toDouble(), ozs.toDouble()));
 
 		obj_writer.println("mtllib " + mtlfile.getName());
 		obj_writer.println();
