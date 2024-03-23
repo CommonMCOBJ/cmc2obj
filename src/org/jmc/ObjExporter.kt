@@ -411,9 +411,8 @@ private fun writeCommonMcObjHeader(objWriter: PrintWriter, offsetVec: Vertex) {
 	objWriter.println("# export_bounds_min: (${Options.minX}, ${Options.minY}, ${Options.minZ})");  // The lowest block coordinate exported in the obj file
 	objWriter.println("# export_bounds_max: (${Options.maxX-1}, ${Options.maxY-1}, ${Options.maxZ-1})");  // The highest block coordinate exported in the obj file
 	objWriter.println("# export_offset: " + String.format(Locale.US, "(%f, %f, %f)", offsetVec.x, offsetVec.y, offsetVec.z)); // The offset vector the model was exported with
-	objWriter.println("# block_origin_offset: (-0.5, -0.5, -0.5)"); // The offset vector of the block model origins
 	objWriter.println("# block_scale: ${Options.scale}"); // Scale of each block
-	objWriter.println("# is_centered: " + (if (Options.offsetType == OffsetType.CENTER) "true" else "false"));  // true if centered, false if not
+	objWriter.println("# block_origin_offset: (-0.5, -0.5, -0.5)"); // The offset vector of the block model origins
 	objWriter.println("# z_up: false");  // true if the Z axis is up instead of Y, false is not
 	objWriter.println("# texture_type: " + (if (Options.singleMaterial) "ATLAS" else "INDIVIDUAL_TILES"));  // ATLAS or INDIVIDUAL_TILES
 	objWriter.println("# has_split_blocks: " + (if (Options.objectPerMaterial) "true" else "false"));  // true if blocks have been split, false if not
