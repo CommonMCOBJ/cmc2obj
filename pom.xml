@@ -138,6 +138,7 @@
 		<maven.build.timestamp.format>yyyyMMdd HHmm</maven.build.timestamp.format>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<kotlin.version>1.9.23</kotlin.version>
+		<kotlin.compiler.incremental>true</kotlin.compiler.incremental>
 	</properties>
 	<repositories>
 		<repository>
