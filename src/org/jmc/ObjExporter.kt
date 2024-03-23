@@ -404,8 +404,9 @@ private fun writeCommonMcObjHeader(objWriter: PrintWriter) {
 	objWriter.println("# exporter: cmc2obj");  // Name of the exporter, all lowercase, with spaces substituted by underscores
 	objWriter.println("# world_name: ${Options.worldDir?.getName()}");  // Name of the source world
 	objWriter.println("# world_path: ${Options.worldDir?.toString()}");  // Path of the source world
-	objWriter.println("# exported_bounds_min: (${Options.minX}, ${Options.minY}, ${Options.minZ})");  // The lowest block coordinate exported in the obj file
-	objWriter.println("# exported_bounds_max: (${Options.maxX-1}, ${Options.maxY-1}, ${Options.maxZ-1})");  // The highest block coordinate exported in the obj file
+	objWriter.println("# export_bounds_min: (${Options.minX}, ${Options.minY}, ${Options.minZ})");  // The lowest block coordinate exported in the obj file
+	objWriter.println("# export_bounds_max: (${Options.maxX-1}, ${Options.maxY-1}, ${Options.maxZ-1})");  // The highest block coordinate exported in the obj file
+	objWriter.println("# export_offset: (${Options.offsetX}, 0, ${Options.offsetZ})");
 	objWriter.println("# block_scale: ${Options.scale}"); // Scale of each block
 	objWriter.println("# is_centered: " + (if (Options.offsetType == OffsetType.CENTER) "true" else "false"));  // true if centered, false if not
 	objWriter.println("# z_up: false");  // true if the Z axis is up instead of Y, false is not
