@@ -94,7 +94,7 @@
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>org.jmc.Main</mainClass>
+							<mainClass>org.jmc.MainKt</mainClass>
 						</manifest>
 					</archive>
 					<descriptorRefs>
