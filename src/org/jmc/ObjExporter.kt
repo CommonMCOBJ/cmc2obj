@@ -306,7 +306,7 @@ fun export(progress: ProgressCallback?, writeTex: Boolean) {
 			uvfile.delete();
 
 			val vertex_reader: BufferedReader = Files.newBufferedReader(vertexfile.toPath(), StandardCharsets.UTF_8);
-			while (objin.readLine().also { line = it } != null) {
+			while (vertex_reader.readLine().also { line = it } != null) {
 				main.println(line);
 			}
 			vertex_reader.close();
