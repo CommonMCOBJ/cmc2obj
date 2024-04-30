@@ -331,6 +331,9 @@ fun export(progress: ProgressCallback?, writeTex: Boolean) {
 				}
 				main.println();
 
+				main.println("usemtl " + ff.name);
+				main.println();
+
 				val reader: BufferedReader = Files.newBufferedReader(ff.file.toPath(), StandardCharsets.UTF_8);
 				while (reader.readLine().also { line = it } != null) {
 					if (Options.objectPerChunk && line?.startsWith(Options.getObjObject() + " ") as Boolean) {
